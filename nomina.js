@@ -9,7 +9,7 @@ class Employee {
         this. numHorasTrab = numHorasTrab;
     }
 
-    getiId() {
+    getId() {
         return this.id
     }
     setId(id) {
@@ -24,7 +24,7 @@ class Employee {
     }
 
     getCargo() {
-        return this.cargo
+        return this.cargo;
     }
     setCargo(cargo) {
         this.cargo = cargo;
@@ -63,20 +63,27 @@ const registerEmployee = () => {
     employees.push(emp);
 }
 const calcularSalarioMensual = (horas, tarifa) => {
-    return (horas*tarifa);
+    let salario = horas*tarifa;
+    return salario;
 }
 
 const reporteEmpleado = () => {
-    employees.forEach(e =>{
-        alert(`Id: ${e.getiId()}\nNombre del trabajador: ${e.getName()}\nCargo: ${e.cargo()}\n
-                Horas trabajadas: ${e.getNumHorasTrab()}\nTarifa por hora: ${e.getTarifaHora()}\n
-                Salario mensual: ${e.getNumHorasTrab()*e.getTarifaHora()}`);
-    })
+    for(i = 0; i < employees.length; i++){
+        e = employees[i];
+        horas = e.getNumHorasTrab();
+        tarifa = e.getTarifaHora();
+        alert('...Reporte del empleado...' + '\nId:' + e.getId() + '\nNombre del empleado: ' + e.getName() +
+                '\nCargo: ' + e.getCargo() + '\nHoras trabajadas: ' + horas +
+            '\nTarifa por hora: ' + tarifa + '\nSalario mensual: ' + calcularSalarioMensual(horas, tarifa));
+    }
 }
 
 
 let numEmp = parseInt(prompt('ingrese numero de empleados: '));
 showEmployeeForm(numEmp);
-
 reporteEmpleado();
+
+
+
+
 
